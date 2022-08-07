@@ -1,0 +1,45 @@
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Heroes app</h1>
+        <p class="lead text-muted">Lo bueno de la  imaginacion, es que puedes hacer lo que quieras con ella aunque sean cosas malas, y no afectaras a nadie mas que a ti.</p>
+        <p>
+          <a href="/create-heroes" class="btn btn-primary my-2">Crear nuevo super heroe</a>
+          <a href="/create-races" class="btn btn-secondary my-2">Crear nueva raza</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+        {{#if hasHeroes}}
+        {{#each heroes as |hero|}}
+      <div class="card cool-md-3">
+        <div class="card-body">
+          <h5 class="card-title">{{hero.name}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{hero.raza.dataValues.name}}</h6>
+          <p class="card-text">{{hero.description}}.</p>
+
+          <button class="btn btn-primary "><a href="/edit-heroes/{{hero.id}}?edit=true" class="text-white">Editar</a></button>
+          <form action="/delete-heroes" method="POST">
+
+          <input type="hidden" name="heroesId" value="{{hero.id}}">
+
+          <button type="submit" class="btn btn-primary" id="delete-heroes">Eliminar</button>
+        </form>
+        </div>
+      </div>
+
+      {{/each}}
+      {{else}}
+      <h1>No hay heroes</h1>
+
+      {{/if}}
+        </div>
+      </div>
+    </div>
+    

@@ -1,0 +1,67 @@
+<div class="row">
+
+<div class="col-md-3"></div>
+<div class="col-md-6">
+
+    {{#if hasRaces}}
+
+    <div class="card">
+      <div class="card-header bg-dark text-white">{{#if editMode}}Editando Heroe{{else}}Creacion de heroes{{/if}}</div>
+
+      <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text">Soporte de todo lo demas, no se lo que sea pero es importante.</p>
+
+        <form action="{{#if editMode}}/edit-heroes{{else}}/create-heroes{{/if}}" method="POST">
+          <div class="mb-3">
+            <label for="name" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="name" name="Name" value="{{#if editMode}}{{hero.name}}{{/if}}">
+          </div>
+          <div class="mb-3">
+            <label for="races" class="form-label">Descripcion:</label>
+            <input type="text" class="form-control" id="descripcion" name="Description" value="{{#if editMode}}{{hero.description}}{{/if}}">
+          </div>
+
+          <div class="mb-3">
+            <label for="races" class="form-label">Razas:</label>
+            <select name="Races" id="races" class="form-select">
+
+                <option {{#if editMode}}{{else}}selected{{/if}}>Seleccione una raza</option>
+
+
+                {{#each races as |race|}}
+
+                    {{#if (equalValue race.id ../hero.razaId)}}
+
+                        <option selected value="{{race.id}}">{{race.name}}</option>
+
+                    {{else}}
+
+                    <option value="{{race.id}}">{{race.name}}</option>
+
+                    {{/if}}
+
+                {{/each}}
+ 
+            </select>  
+          </div>
+          {{#if editMode}}
+          
+          <input type="hidden" name="heroId" value="{{hero.id}}">
+          
+          {{/if}}
+            <button type="submit" class="btn btn-primary">{{#if editMode}}Editar{{else}}Crear{{/if}}</button>
+           <a href="/" type="submit" class="btn btn-primary">Volver atras</a>
+        </form>
+      </div>     
+    </div>
+
+    {{else}}
+
+    <h1>No hay razas creadas</h1>
+
+    {{/if}}
+</div>
+<div class="col-md-6"></div>
+
+</div>

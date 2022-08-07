@@ -1,0 +1,38 @@
+   <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Heroes app</h1>
+        <p class="lead text-muted">Lo bueno de la  imaginacion, es que puedes hacer lo que quieras con ella aunque sean cosas malas, y no afectaras a nadie mas que a ti.</p>
+        <p> 
+          <a href="/create-races" class="btn btn-secondary my-2">Crear nueva raza</a>
+        </p>
+      </div>
+    </div>
+  </section>
+ 
+ <div class="album py-5 bg-light">
+    <div class="container">
+
+<h3 class="mb-3">Lista de razas</h3>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+        {{#each races as |race|}}
+      <div class="card cool-md-3">
+        <div class="card-body">
+          <h5 class="card-title">{{race.name}}</h5>
+          <a href="/edit-races/{{race.id}}?edit=true">Editar</a>
+
+          <form action="/delete-races" method="POST">
+          <input type="hidden" name="raceId" value="{{race.id}}">
+          <button type="submit" class="card-link" id="delete-race">Eliminar</button>
+        </form>
+        </div>
+      </div>
+
+      {{/each}}
+        </div>
+      </div>
+    </div>
+    
+
+
