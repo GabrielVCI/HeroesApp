@@ -11,6 +11,6 @@ ahí debe colocar sus credenciales en SQL SERVER en lugar de sa y password.
 HeroesApp es una aplicación que te sirve para crear superheroes, los cuales constan de un nombre,
 una raza y una descripción. Las razas podrás crearlas tu mismo y así poder asignarle la raza que desee a su heroe.
 
-#OJO
+# OJO
 Para correr la aplicación en el navegador, debe correr el puerto 12001.
 Escriba localhost:12001
